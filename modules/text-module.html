@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+    <!-- Alpine.js -->
+     <script src="/assets/js/alpine.js" defer></script>
+
+     <link rel="stylesheet" href="/assets/css/output.css" />
+</head>
+<body>
+         <a class="skip_link" href="#content">Skip to content</a>
+        <!-- Header -->
+  <!-- Header -->
+<header
+  class="relative z-50"
+  x-data="{
+    mobileMenuOpen: false,
+    megaMenuOpen: false,
+    activeTab: null,
+    mobileSubmenuOpen: false,
+    scrolled: false
+  }"
+  @scroll.window="scrolled = window.scrollY > 80"
+>
+
+  <!-- =========================================================
+        TOP HEADER
+  ========================================================== -->
+  <div
+    class="fixed inset-x-0 top-0 z-50 bg-blue text-white py-10 px-40 xl:px-64 text-sm xl:text-16 transition-opacity duration-500 ease-in-out"
+    :class="scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'"
+  >
+    <div class="flex min-h-10 items-center justify-center md:justify-between font-medium">
+
+      <!-- Left -->
+      <div class="flex items-center gap-4">
+        <span>Ein Unternehmen der</span>
+        <a href="#" aria-label="VDH Group" class="ml-1 inline-flex items-center">
+          <img src="/assets/images/VH_menu-logo.svg" alt="VDH Group" class="w-88">
+        </a>
+      </div>
+
+      <!-- Center -->
+      <div class="items-center hidden md:flex">
+        <span>Haben Sie Fragen? Rufen Sie uns gerne an:</span>
+        <a href="tel:+492014378373" class="ml-1">
+          + 49 201 43783 73
+        </a>
+      </div>
+
+      <!-- Right -->
+      <div class="hidden lg:flex items-center gap-4">
+        <span>Besuchen Sie uns:</span>
+        <a
+          href="#"
+          aria-label="LinkedIn"
+          class="inline-flex size-16 items-center justify-center rounded-sm text-[#0872B9] shrink-0"
+        >
+          <img src="/assets/images/linkedin-icon-white.svg" alt="linkedin icon" class="size-16">
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================
+        MAIN HEADER / NAVIGATION
+  ========================================================== -->
+  <div
+    class="fixed inset-x-0 z-40 transition-[top] duration-500 ease-in-out"
+    :class="scrolled ? 'top-10' : 'top-100'"
+  >
+    <div class="container">
+      <div class="flex items-center justify-between rounded-2xl bg-white py-26 px-40 shadow-inner">
+
+        <!-- LOGO -->
+        <div class="nav-left">
+          <a href="/" class="shrink-0" aria-label="DrySoTec">
+            <img
+              src="/assets/images/dry-logo-blue.svg"
+              alt="DrySoTec Rauchgasreinigung"
+              class="h-auto w-104"
+            >
+          </a>
+        </div>
+       <!-- DESKTOP NAVIGATION -->
+          <nav aria-label="Main Navigation" class="hidden xl:block">
+            <ul role="list" class="nav-list flex list-none m-0 p-0 gap-16 2xl:gap-20">
+
+              <!-- Über uns -->
+              <li class="nav-list-item">
+                <a href="#" class="nav-link w-inline-block px-4 py-2 block text-gray-800 hover:text-blue-600">
+                  <div class="text-navigation">Über uns</div>
+                </a>
+              </li>
+
+              <!-- Liefer- und Leistungsspektrum Dropdown -->
+              <li 
+                class="nav-list-item relative"
+                x-data="navDropdown({ delay: 300 })"
+                @mouseenter="handleMouseEnter()"
+                @mouseleave="handleMouseLeave()"
+                @keydown.escape.stop="closeDropdown()"
+              >
+                <div class="nav-dropdown w-dropdown">
+                  <!-- Main Dropdown Toggle -->
+                  <div 
+                    class="nav-dropdown-toggle w-dropdown-toggle flex items-center gap-1 px-4 py-2 cursor-pointer"
+                    id="w-dropdown-toggle-0" 
+                    aria-controls="w-dropdown-list-0" 
+                    aria-haspopup="menu" 
+                    :aria-expanded="isOpen" 
+                    role="button" 
+                    tabindex="0"
+                    @click="toggleDropdown()"
+                    @keydown.enter.prevent="toggleDropdown()"
+                    @keydown.space.prevent="toggleDropdown()"
+                  >
+                    <div class="text-navigation">Liefer- und Leistungsspektrum</div>
+                    <div class="dropdown-icon w-embed transition-transform duration-200" :class="{ 'rotate-180': isOpen }">
+                      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" class="iconify iconify--tabler" width="18" height="18" viewBox="0 0 24 24">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9l6 6l6-6"></path>
+                      </svg>
+                    </div>
+                    <a aria-label="link" href="#" aria-current="page" class="link-absolute w-inline-block w--current absolute inset-0 z-10" @click.stop></a>
+                  </div>
+
+                  <!-- Main Dropdown Menu -->
+                  <nav 
+                    x-show="isOpen"
+                    x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 -translate-y-2 scale-95"
+                    x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                    x-transition:leave-end="opacity-0 -translate-y-2 scale-95"
+                    data-submenu-scope="" 
+                    class="nav-dropdown-list w-dropdown-list absolute left-0 top-full bg-white shadow-xl rounded-xl z-20 min-w-280" 
+                    id="w-dropdown-list-0" 
+                    aria-labelledby="w-dropdown-toggle-0"
+                    x-cloak
+                  >
+                    <div class="nav-dropdown-list-inner flex">
+
+                      <!-- Primary Navigation Links -->
+                      <div class="nav-dropdown-menu flex flex-col p-2 border-r border-gray-100" style="border-top-right-radius: 20px; border-bottom-right-radius: 20px;">
+                        
+                        <!-- SNCR (DeNOx) -->
+                        <a
+                          href="#"
+                          class="nav-dropdown-link w-inline-block flex items-center justify-between p-3 rounded-lg transition-colors hover:bg-gray-100"
+                          :class="{ 'bg-gray-100 font-semibold': activeSubmenu === 'submenu-1' }"
+                          @mouseenter="activeSubmenu = 'submenu-1'"
+                          @focus="activeSubmenu = 'submenu-1'"
+                          tabindex="0"
+                        >
+                          <div class="nav-dropdown-link-label flex items-center gap-3">
+                            <div class="nav-dropdown-link-icon-wrapper w-6 h-6 flex-shrink-0">
+                              <img loading="lazy" src="https://cdn.prod.website-files.com/6889ebbd537da13f793c0269/6889ebbd537da13f793c0413_Verfahrens-%20und%20Anlagentechnik.svg" alt="Verfahrens- und Anlagentechnik" class="nav-dropdown-link-icon w-full h-full">
+                            </div>
+                            <div class="text-navigation">SNCR (DeNOx)</div>
+                          </div>
+                          <div class="dropdown-icon secondary w-embed -rotate-90">
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" class="iconify iconify--tabler" width="16" height="16" viewBox="0 0 24 24">
+                              <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9l6 6l6-6"></path>
+                            </svg>
+                          </div>
+                        </a>
+
+                        <!-- Mobile SNCR & Temperaturmessungen -->
+                        <a
+                          href="#"
+                          class="nav-dropdown-link w-inline-block flex items-center justify-between p-3 rounded-lg transition-colors hover:bg-gray-100"
+                          :class="{ 'bg-gray-100 font-semibold': activeSubmenu === 'submenu-2' }"
+                          @mouseenter="activeSubmenu = 'submenu-2'"
+                          @focus="activeSubmenu = 'submenu-2'"
+                          tabindex="0"
+                        >
+                          <div class="nav-dropdown-link-label flex items-center gap-3">
+                            <div class="nav-dropdown-link-icon-wrapper w-6 h-6 flex-shrink-0">
+                              <img loading="lazy" src="https://cdn.prod.website-files.com/6889ebbd537da13f793c0269/6889ebbd537da13f793c040f_Mess-%2C%20Steuer-%20und%20Regeltechnik.svg" alt="Mess-, Steuer- und Regeltechnik" class="nav-dropdown-link-icon w-full h-full">
+                            </div>
+                            <div class="text-navigation">Mobile SNCR &amp; Temperaturmessungen</div>
+                          </div>
+                          <div class="dropdown-icon secondary w-embed -rotate-90">
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" class="iconify iconify--tabler" width="16" height="16" viewBox="0 0 24 24">
+                              <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9l6 6l6-6"></path>
+                            </svg>
+                          </div>
+                        </a>
+
+                        <!-- Tanklager -->
+                        <a
+                          href="#"
+                          class="nav-dropdown-link w-inline-block flex items-center justify-between p-3 rounded-lg transition-colors hover:bg-gray-100"
+                          :class="{ 'bg-gray-100 font-semibold': activeSubmenu === 'submenu-3' }"
+                          @mouseenter="activeSubmenu = 'submenu-3'"
+                          @focus="activeSubmenu = 'submenu-3'"
+                          tabindex="0"
+                        >
+                          <div class="nav-dropdown-link-label flex items-center gap-3">
+                            <div class="nav-dropdown-link-icon-wrapper w-6 h-6 flex-shrink-0">
+                              <img loading="lazy" src="https://cdn.prod.website-files.com/6889ebbd537da13f793c0269/6889ebbd537da13f793c0412_Qualifizierter%20Rohrleitungsbau.svg" alt="Qualifizierter Rohrleitungsbau" class="nav-dropdown-link-icon w-full h-full">
+                            </div>
+                            <div class="text-navigation">Tanklager</div>
+                          </div>
+                          <div class="dropdown-icon secondary w-embed -rotate-90">
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" class="iconify iconify--tabler" width="16" height="16" viewBox="0 0 24 24">
+                              <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9l6 6l6-6"></path>
+                            </svg>
+                          </div>
+                        </a>
+
+                        <!-- Reduktionsmittel (No Submenu) -->
+                        <a
+                          href="#"
+                          class="nav-dropdown-link w-inline-block flex items-center justify-between p-3 rounded-lg transition-colors hover:bg-gray-100"
+                          @mouseenter="activeSubmenu = null"
+                          @focus="activeSubmenu = null"
+                          tabindex="0"
+                        >
+                          <div class="nav-dropdown-link-label flex items-center gap-3">
+                            <div class="nav-dropdown-link-icon-wrapper w-6 h-6 flex-shrink-0">
+                              <img loading="lazy" src="https://cdn.prod.website-files.com/6889ebbd537da13f793c0269/6889ebbd537da13f793c0411_Das%20SNCR-Verfahren.svg" alt="Das SNCR-Verfahren" class="nav-dropdown-link-icon w-full h-full">
+                            </div>
+                            <div class="text-navigation">Reduktionsmittel</div>
+                          </div>
+                        </a>
+
+                        <!-- Service & Instandhaltung (No Submenu) -->
+                        <a
+                          href="#"
+                          class="nav-dropdown-link w-inline-block flex items-center justify-between p-3 rounded-lg transition-colors hover:bg-gray-100"
+                          @mouseenter="activeSubmenu = null"
+                          @focus="activeSubmenu = null"
+                          tabindex="0"
+                        >
+                          <div class="nav-dropdown-link-label flex items-center gap-3">
+                            <div class="nav-dropdown-link-icon-wrapper w-6 h-6 shrink-0">
+                              <img loading="lazy" src="https://cdn.prod.website-files.com/6889ebbd537da13f793c0269/688afdcdd090d33d6f84d076_wheel-check-icon.svg" alt="" class="nav-dropdown-link-icon w-full h-full">
+                            </div>
+                            <div class="text-navigation">Service &amp; Instandhaltung</div>
+                          </div>
+                        </a>
+
+                      </div>
+
+                      <!-- Submenu Dynamic Side Panels -->
+                      <div class="nav-submenu-wrapper min-w-280 p-2" x-show="activeSubmenu !== null">
+
+                        <!-- Submenu 1: SNCR (DeNOx) -->
+                        <div class="nav-submenu first flex flex-col gap-1" x-show="activeSubmenu === 'submenu-1'">
+                          <a href="#" class="nav-dropdown-link w-inline-block p-2 rounded hover:bg-gray-100" tabindex="0">
+                            <div class="text-navigation text-sm">Das SNCR-Verfahren</div>
+                          </a>
+                          <a href="#" class="nav-dropdown-link w-inline-block p-2 rounded hover:bg-gray-100" tabindex="0">
+                            <div class="text-navigation text-sm">SNCR-Anlagen</div>
+                          </a>
+                          <a href="#" class="nav-dropdown-link w-inline-block p-2 rounded hover:bg-gray-100" tabindex="0">
+                            <div class="text-navigation text-sm">Einzellanzenumschaltung</div>
+                          </a>
+                          <a href="#" class="nav-dropdown-link w-inline-block p-2 rounded hover:bg-gray-100" tabindex="0">
+                            <div class="text-navigation text-sm">TWIN-NOx</div>
+                          </a>
+                          <a href="#" class="nav-dropdown-link w-inline-block p-2 rounded hover:bg-gray-100" tabindex="0">
+                            <div class="text-navigation text-sm">Selective Cooling</div>
+                          </a>
+                        </div>
+
+                        <!-- Submenu 2: Mobile SNCR & Temperaturmessungen -->
+                        <div class="nav-submenu second flex flex-col gap-1" x-show="activeSubmenu === 'submenu-2'">
+                          <a href="#" class="nav-dropdown-link w-inline-block p-2 rounded hover:bg-gray-100" tabindex="0">
+                            <div class="text-navigation text-sm">Warum eine mobile SNCR?</div>
+                          </a>
+                          <a href="#" class="nav-dropdown-link w-inline-block p-2 rounded hover:bg-gray-100" tabindex="0">
+                            <div class="text-navigation text-sm">Versuchsaufbau &amp; -durchführung</div>
+                          </a>
+                          <a href="#" class="nav-dropdown-link w-inline-block p-2 rounded hover:bg-gray-100" tabindex="0">
+                            <div class="text-navigation text-sm">Temperaturmessungen</div>
+                          </a>
+                        </div>
+
+                        <!-- Submenu 3: Tanklager -->
+                        <div class="nav-submenu third flex flex-col gap-1" x-show="activeSubmenu === 'submenu-3'">
+                          <a href="#" class="nav-dropdown-link w-inline-block p-2 rounded hover:bg-gray-100" tabindex="0">
+                            <div class="text-navigation text-sm">Reduktionsmittellager für Harnstofflösung</div>
+                          </a>
+                          <a href="#" class="nav-dropdown-link w-inline-block p-2 rounded hover:bg-gray-100" tabindex="0">
+                            <div class="text-navigation text-sm">Das passende Tanklager für Ihr Reduktionsmittel</div>
+                          </a>
+                          <a href="#" class="nav-dropdown-link w-inline-block p-2 rounded hover:bg-gray-100" tabindex="0">
+                            <div class="text-navigation text-sm">Harnstofflösung und / oder Ammoniakwasser</div>
+                          </a>
+                          <a href="#" class="nav-dropdown-link w-inline-block p-2 rounded hover:bg-gray-100" tabindex="0">
+                            <div class="text-navigation text-sm">Harnstoff-Anmischstation</div>
+                          </a>
+                        </div>
+
+                      </div>
+                    </div>
+                  </nav>
+                </div>
+              </li>
+
+              <!-- Referenzen -->
+              <li class="nav-list-item">
+                <a href="#" class="nav-link w-inline-block px-4 py-2 block text-gray-800 hover:text-blue-600">
+                  <div class="text-navigation">Referenzen</div>
+                </a>
+              </li>
+
+              <!-- Downloads -->
+              <li class="nav-list-item">
+                <a href="#" class="nav-link w-inline-block px-4 py-2 block text-gray-800 hover:text-blue-600">
+                  <div class="text-navigation">Downloads</div>
+                </a>
+              </li>
+
+              <!-- Karriere -->
+              <li class="nav-list-item">
+                <a href="#" class="nav-link w-inline-block px-4 py-2 block text-gray-800 hover:text-blue-600">
+                  <div class="text-navigation">Karriere</div>
+                </a>
+              </li>
+
+            </ul>
+          </nav>
+       
+        
+
+        <!-- HEADER ACTIONS -->
+        <div class="nav-right hidden items-center gap-8 lg:flex">
+          <a href="#" class="btn-secondary">KONTAKT</a>
+
+          <button
+            type="button"
+            class="inline-flex h-47 items-center justify-center rounded-head border-2 border-solid px-16 border-dark_blue cursor-pointer"
+            aria-label="Sprache auswählen"
+          >
+            DE/
+          </button>
+           <!-- MOBILE MENU BUTTON -->
+        <button
+          type="button"
+          @click="mobileMenuOpen = !mobileMenuOpen"
+          class="inline-flex size-42 items-center justify-center  xl:hidden cursor-pointer"
+          aria-label="Menü öffnen"
+          :aria-expanded="mobileMenuOpen"
+        >
+          <span class="flex w-32 flex-col gap-3">
+            <span class="h-3 w-full bg-[#17172D] transition-transform" :class="mobileMenuOpen ? 'rotate-45 translate-y-2' : ''"></span>
+          
+            <span class="h-3 w-full bg-[#17172D] transition-transform" :class="mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''"></span>
+          </span>
+        </button>
+
+          <button
+            type="button"
+            class="inline-flex xl:size-47 items-center justify-center text-[#17172D] cursor-pointer"
+            aria-label="Suche öffnen"
+          >
+            <svg class="size-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5"/>
+              <path d="m16 16 5 5"/>
+            </svg>
+          </button>
+        </div>
+
+       
+
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+        RESPONSIVE MOBILE VIEW DRAWER
+  ========================================================== -->
+  <div
+    x-show="mobileMenuOpen"
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    class="fixed inset-0 z-50 bg-blue text-white overflow-y-auto lg:hidden flex flex-col justify-between py-24 px-40"
+    x-cloak
+    x-data="{ 
+      lieferMenuOpen: false, 
+      mobileActiveTab: null 
+    }"
+  >
+    <div>
+      <!-- Header: Logo, Contact Pill & Close Icon -->
+      <div class="flex items-center justify-between pb-8">
+        <a href="/" class="shrink-0">
+          <img src="/assets/images/dry-white-logo.svg" alt="DrySoTec" class="h-47 w-auto">
+        </a>
+
+        <div class="flex items-center gap-4">
+          <a 
+            href="#" 
+            class="rounded-full border border-white px-6 py-2 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-white hover:text-blue"
+          >
+            KONTAKT
+          </a>
+          
+          <button 
+            @click="mobileMenuOpen = false" 
+            aria-label="Menü schließen"
+            class="text-white hover:opacity-80 p-2 cursor-pointer"
+          >
+            <svg class="size-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation List -->
+      <nav class="in-menu">
+        <ul class="divide-y divide-white/20">
+          
+          <!-- 1. Link: Über uns -->
+          <li class="flex items-center justify-between py-4">
+            <a href="#" class="hover:underline font-semibold">Über uns</a>
+            <a href="#" aria-label="Über uns Details" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold hover:bg-white hover:text-blue w-108 h-30 flex justify-center items-center text-sm transition-colors">
+              &gt;
+            </a>
+          </li>
+
+          <!-- 2. Parent: Liefer- und Leistungsspektrum -->
+          <li class="py-4">
+            <button 
+              type="button" 
+              @click="lieferMenuOpen = !lieferMenuOpen"
+              class="flex w-full items-center justify-between text-left group cursor-pointer"
+            >
+              <div class="inline-flex items-center gap-2 group-hover:underline font-bold">
+                <span>Liefer- und Leistungsspektrum</span>
+                <svg 
+                  class="size-4 transition-transform duration-200" 
+                  :class="lieferMenuOpen ? 'rotate-180' : ''" 
+                  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"
+                >
+                  <path d="m6 9 6 6 6-6"/>
+                </svg>
+              </div>
+              <span class="rounded-2xl border-2 border-white px-24 py-1 font-semibold group-hover:bg-white group-hover:text-blue w-108 h-30 flex justify-center items-center text-sm transition-colors">
+                &gt;
+              </span>
+            </button>
+
+            <!-- LEVEL 2: Submenu (Only shows when lieferMenuOpen is true) -->
+            <ul x-show="lieferMenuOpen" class="mt-2 divide-y divide-white/20 pl-4" x-cloak>
+              
+              <!-- 2.1 Subitem: SNCR (DeNOx) -->
+              <li class="py-3">
+                <button 
+                  type="button" 
+                  @click="mobileActiveTab = (mobileActiveTab === 'sncr' ? null : 'sncr')"
+                  class="flex w-full items-center justify-between text-left group cursor-pointer"
+                >
+                  <div class="inline-flex items-center gap-2 group-hover:underline text-sm font-semibold">
+                    <span>SNCR (DeNOx)</span>
+                    <span aria-hidden="true" x-text="mobileActiveTab === 'sncr' ? '↓' : '→'"></span>
+                  </div>
+                  <span class="rounded-full border border-white px-7 py-1 text-xs font-semibold group-hover:bg-white group-hover:text-blue transition-colors">
+                    &gt;
+                  </span>
+                </button>
+
+                <!-- LEVEL 3: Inside Links for SNCR -->
+                <ul x-show="mobileActiveTab === 'sncr'" class="mt-2 divide-y divide-white/10 pl-4 text-xs font-normal" x-cloak>
+                  <li class="flex items-center justify-between py-2.5">
+                    <a href="#" class="hover:underline">Das SNCR-Verfahren</a>
+                    <a href="#" class="rounded-full border border-white px-6 py-0.5 hover:bg-white hover:text-blue transition-colors">&gt;</a>
+                  </li>
+                  <li class="flex items-center justify-between py-2.5">
+                    <a href="#" class="hover:underline">SNCR-Anlagen</a>
+                    <a href="#" class="rounded-full border border-white px-6 py-0.5 hover:bg-white hover:text-blue transition-colors">&gt;</a>
+                  </li>
+                  <li class="flex items-center justify-between py-2.5">
+                    <a href="#" class="hover:underline">Einzellanzenumschaltung</a>
+                    <a href="#" class="rounded-full border border-white px-6 py-0.5 hover:bg-white hover:text-blue transition-colors">&gt;</a>
+                  </li>
+                  <li class="flex items-center justify-between py-2.5">
+                    <a href="#" class="hover:underline">TWIN-NOx</a>
+                    <a href="#" class="rounded-full border border-white px-6 py-0.5 hover:bg-white hover:text-blue transition-colors">&gt;</a>
+                  </li>
+                  <li class="flex items-center justify-between py-2.5">
+                    <a href="#" class="hover:underline">Selektive Rauchgaskühlung</a>
+                    <a href="#" class="rounded-full border border-white px-6 py-0.5 hover:bg-white hover:text-blue transition-colors">&gt;</a>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- 2.2 Subitem: Mobile SNCR & Temperaturmessungen -->
+              <li class="py-3">
+                <button 
+                  type="button" 
+                  @click="mobileActiveTab = (mobileActiveTab === 'mobile' ? null : 'mobile')"
+                  class="flex w-full items-center justify-between text-left group cursor-pointer"
+                >
+                  <div class="inline-flex items-center gap-2 group-hover:underline text-sm font-semibold">
+                    <span>Mobile SNCR &amp; Temperaturmessungen</span>
+                    <span aria-hidden="true" x-text="mobileActiveTab === 'mobile' ? '↓' : '→'"></span>
+                  </div>
+                  <span class="rounded-full border border-white px-7 py-1 text-xs font-semibold group-hover:bg-white group-hover:text-blue transition-colors">
+                    &gt;
+                  </span>
+                </button>
+
+                <!-- LEVEL 3: Inside Links for Mobile SNCR -->
+                <ul x-show="mobileActiveTab === 'mobile'" class="mt-2 divide-y divide-white/10 pl-4 text-xs font-normal" x-cloak>
+                  <li class="flex items-center justify-between py-2.5">
+                    <a href="#" class="hover:underline">Temperaturmessungen</a>
+                    <a href="#" class="rounded-full border border-white px-6 py-0.5 hover:bg-white hover:text-blue transition-colors">&gt;</a>
+                  </li>
+                  <li class="flex items-center justify-between py-2.5">
+                    <a href="#" class="hover:underline">Mobile SNCR Tests</a>
+                    <a href="#" class="rounded-full border border-white px-6 py-0.5 hover:bg-white hover:text-blue transition-colors">&gt;</a>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- 2.3 Subitem: Tanklager -->
+              <li class="py-3">
+                <button 
+                  type="button" 
+                  @click="mobileActiveTab = (mobileActiveTab === 'tanklager' ? null : 'tanklager')"
+                  class="flex w-full items-center justify-between text-left group cursor-pointer"
+                >
+                  <div class="inline-flex items-center gap-2 group-hover:underline text-sm font-semibold">
+                    <span>Tanklager</span>
+                    <span aria-hidden="true" x-text="mobileActiveTab === 'tanklager' ? '↓' : '→'"></span>
+                  </div>
+                  <span class="rounded-full border border-white px-7 py-1 text-xs font-semibold group-hover:bg-white group-hover:text-blue transition-colors">
+                    &gt;
+                  </span>
+                </button>
+
+                <!-- LEVEL 3: Inside Links for Tanklager -->
+                <ul x-show="mobileActiveTab === 'tanklager'" class="mt-2 divide-y divide-white/10 pl-4 text-xs font-normal" x-cloak>
+                  <li class="flex items-center justify-between py-2.5">
+                    <a href="#" class="hover:underline">Tanklager Systeme</a>
+                    <a href="#" class="rounded-full border border-white px-6 py-0.5 hover:bg-white hover:text-blue transition-colors">&gt;</a>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- 2.4 Subitem: Reduktionsmittel -->
+              <li class="py-3">
+                <button 
+                  type="button" 
+                  @click="mobileActiveTab = (mobileActiveTab === 'reduktion' ? null : 'reduktion')"
+                  class="flex w-full items-center justify-between text-left group cursor-pointer"
+                >
+                  <div class="inline-flex items-center gap-2 group-hover:underline text-sm font-semibold">
+                    <span>Reduktionsmittel</span>
+                    <span aria-hidden="true" x-text="mobileActiveTab === 'reduktion' ? '↓' : '→'"></span>
+                  </div>
+                  <span class="rounded-full border border-white px-7 py-1 text-xs font-semibold group-hover:bg-white group-hover:text-blue transition-colors">
+                    &gt;
+                  </span>
+                </button>
+
+                <!-- LEVEL 3: Inside Links for Reduktionsmittel -->
+                <ul x-show="mobileActiveTab === 'reduktion'" class="mt-2 divide-y divide-white/10 pl-4 text-xs font-normal" x-cloak>
+                  <li class="flex items-center justify-between py-2.5">
+                    <a href="#" class="hover:underline">Harnstoff &amp; Ammoniak</a>
+                    <a href="#" class="rounded-full border border-white px-6 py-0.5 hover:bg-white hover:text-blue transition-colors">&gt;</a>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- 2.5 Subitem: Service & Instandhaltung -->
+              <li class="py-3">
+                <button 
+                  type="button" 
+                  @click="mobileActiveTab = (mobileActiveTab === 'service' ? null : 'service')"
+                  class="flex w-full items-center justify-between text-left group cursor-pointer"
+                >
+                  <div class="inline-flex items-center gap-2 group-hover:underline text-sm font-semibold">
+                    <span>Service &amp; Instandhaltung</span>
+                    <span aria-hidden="true" x-text="mobileActiveTab === 'service' ? '↓' : '→'"></span>
+                  </div>
+                  <span class="rounded-full border border-white px-7 py-1 text-xs font-semibold group-hover:bg-white group-hover:text-blue transition-colors">
+                    &gt;
+                  </span>
+                </button>
+
+                <!-- LEVEL 3: Inside Links for Service -->
+                <ul x-show="mobileActiveTab === 'service'" class="mt-2 divide-y divide-white/10 pl-4 text-xs font-normal" x-cloak>
+                  <li class="flex items-center justify-between py-2.5">
+                    <a href="#" class="hover:underline">Wartung &amp; Support</a>
+                    <a href="#" class="rounded-full border border-white px-6 py-0.5 hover:bg-white hover:text-blue transition-colors">&gt;</a>
+                  </li>
+                </ul>
+              </li>
+
+            </ul>
+          </li>
+
+          <!-- 3. Link: Referenzen -->
+          <li class="flex items-center justify-between py-4">
+            <a href="#" class="hover:underline font-semibold">Referenzen</a>
+            <a href="#" aria-label="Referenzen Details" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold hover:bg-white hover:text-blue w-108 h-30 flex justify-center items-center text-sm transition-colors">
+              &gt;
+            </a>
+          </li>
+
+          <!-- 4. Link: Downloads -->
+          <li class="flex items-center justify-between py-4">
+            <a href="#" class="hover:underline font-semibold">Downloads</a>
+            <a href="#" aria-label="Downloads Details" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold hover:bg-white hover:text-blue w-108 h-30 flex justify-center items-center text-sm transition-colors">
+              &gt;
+            </a>
+          </li>
+
+          <!-- 5. Link: Karriere -->
+          <li class="flex items-center justify-between py-4">
+            <a href="#" class="hover:underline font-semibold">Karriere</a>
+            <a href="#" aria-label="Karriere Details" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold hover:bg-white hover:text-blue w-108 h-30 flex justify-center items-center text-sm transition-colors">
+              &gt;
+            </a>
+          </li>
+
+          <!-- 6. Link: Kontakt -->
+          <li class="flex items-center justify-between py-4">
+            <a href="#" class="hover:underline font-semibold">Kontakt</a>
+            <a href="#" aria-label="Kontakt Details" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold hover:bg-white hover:text-blue w-108 h-30 flex justify-center items-center text-sm transition-colors">
+              &gt;
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Mobile Footer Links -->
+    <div class="mt-10 flex items-center justify-center gap-8 text-sm font-semibold text-white">
+      <a href="#" class="hover:underline">Impressum</a>
+      <a href="#" class="hover:underline">Datenschutz</a>
+    </div>
+  </div>
+
+</header>
+<main id="content">
+     <section class="section-home-tiles py-30 md:py-60 xl:py-100 flex justify-center items-center h-dvh">
+          <div class="container">
+              
+                <!--text-module -->
+                 <div class="block-title compact-2xl">
+                       <div class="prose-22 space-y-32">
+                          <h2 class="text-35">Ihre Spezialisten zum Thema Rauchgasreinigung</h2>
+                          <p class="text-22">DrySoTec GmbH ist Ihr Partner für innovative, ökologisch und ökonomisch optimierte Rauchgasreinigungen nach neuestem Stand der Technik.</p>
+                       
+                            <!-- <a href="#" class="btn-primary">Mehr erfahren</a> -->
+                      </div>
+                </div>
+                
+             
+          </div>
+       </section>
+</main>
+
+    <script src="/assets/js/all.min.js"></script>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

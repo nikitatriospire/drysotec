@@ -1,0 +1,407 @@
+@import "tailwindcss";
+[x-cloak] {
+    display: none !important;
+}
+@font-face {
+  font-family: "Lexend";
+  src: url("/assets/fonts/lexend-latin-wght-normal.woff2");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+@theme {
+  --spacing: 1px;
+  --spacing-bottom:clamp(2.5rem,.513rem + 4.048vw,4.688rem);
+  --spacing-sm: clamp(14px,2vw,16px);
+
+  
+  --breakpoint-*: initial;
+ 
+  --breakpoint-xsm: 450px;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-xxl: 1440px;
+  --breakpoint-3xl: 1650px;
+ 
+  --container-*: initial;
+ 
+  --container-xsm: 450px;
+  --container-sm: 576px;
+  --container-md: 768px;
+  --container-lg: 992px;
+  --container-xl: 1200px;
+  --container-xxl: 1440px;
+  --container-3xl: 1650px;
+
+    --color-ghost-white:#e7ebf7;
+    --color-blue: #0066b2;
+    --color-dark_blue: #171835;
+    --color-red: #b6181f;
+    --color-white: #ffffff;
+    --color-footer_bg:#cce0f0;
+    --color-crd_bg: #F9F9FA;
+    --color-body-bg: #e7ebf7;
+
+
+  --font-lexend:  'lexend';
+ 
+  --text-60: clamp(2.275rem, 2.375rem + 1.5vw, 3.75rem);
+    --text-60--line-height: 1.2;
+
+   --text-100: clamp(4.5rem, 4.5rem + 1.75vw, 6.25rem);
+    --text-100--line-height: 1.3;
+
+    --text-35: clamp(1.5rem,1.287rem + .873vw,2.188rem);
+    --text-35--line-height: 1.4;
+
+  --text-22: clamp(1.2rem, 1.25rem + 0.139vw, 1.375rem);
+    --text-24--line-height: 1.4;
+
+    --text-20: 20px;
+    --text-20--line-height: 1.6;
+
+    --text-18: 18px;
+    --text-18--line-height: 1.4;
+
+    --text-16: 16px;
+    --text-16--line-height: 1.4;
+
+    --transition: all 0.48s ease-in-out;
+    /* padding */
+    --padding-inline: clamp(1.25rem,.239rem + 3.647vw,4rem);
+    --padding-block:clamp(1.5rem,.513rem + 4.048vw,4.688rem);
+
+    /* gap */
+    --gap-compact-sm: .75rem;
+    --gap-compact-md: 2rem;
+    --shadow-inner:rgba(23, 24, 53, 0.1) 0px 4px 4px;
+
+   --radius-head: 2.5rem;
+--gradient:linear-gradient(rgba(0, 102, 178, 0.4), rgba(23, 24, 53, 0.8));
+  
+}
+
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+ ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--color-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #00A7F0;
+    }
+  body{
+    @apply text-16 font-lexend bg-body-bg
+  }
+   .skip_link {
+        @apply sr-only
+    }
+
+    .skip_link:focus {
+        @apply not-sr-only fixed top-0 left-0 z-99999 py-10 px-20 bg-dark_blue text-white -outline-offset-8
+    }
+
+  .container{
+    @apply mx-auto max-w-3xl px-inline transition 
+  }
+ 
+  nav ul{
+    @apply text-16 text-dark_blue font-medium flex justify-center items-center gap-16 xl:gap-20 [&_li>a]:transition [&_li>a]:hover:text-blue
+  }
+  nav.in-menu ul{
+    @apply divide-y divide-white/30 text-white flex flex-col justify-start items-start [&_li]:w-full text-16 font-medium [&_li]:pb-12 [&_li]:flex [&_li]:justify-between [&_li]:items-center
+  }
+  .btn-primary{
+    @apply bg-blue text-white h-47 px-24 w-fit uppercase flex items-center text-sm rounded-head hover:bg-red
+    hover:scale-95 transition
+  }
+  .btn-secondary{
+    @apply bg-red text-white w-fit uppercase text-sm  h-47 px-24  flex items-center rounded-head hover:bg-dark_blue hover:scale-95 transition
+  }
+
+}
+
+@layer components{
+  .overlay{
+    @apply bg-linear-to-b from-blue/40 to-dark_blue/80 absolute inset-0 w-full h-full 
+  }
+  .block-container{
+   @apply xsm:max-w-xsm sm:max-w-sm md:max-w-md lg:max-w-lg xxl:max-w-xxl 3xl:max-w-3xl px-inline mx-auto w-full
+ }
+ .prose ul{
+  @apply [&_ul]:space-y-8 [&_li]:pl-24 [&_li]:before:content-[''] [&_li]:relative  [&_li]:before:size-7 [&_li]:before:bg-white [&_li]:before:absolute [&_li]:before:top-15 [&_li]:before:left-12 [&_li]:before:rounded-full text-16 [&_li]:before:-translate-x-1/2 [&_li]:before:-translate-y-1/2
+ }
+
+ .prose-dark, .prose-22{
+  @apply [&_ul]:space-y-8 [&_li]:pl-24 [&_li]:before:content-[''] [&_li]:relative  [&_li]:before:size-7 [&_li]:before:bg-dark_blue [&_li]:before:absolute [&_li]:before:top-12 [&_li]:before:left-11 [&_li]:before:rounded-full text-16 [&_li]:before:-translate-x-1/2 [&_li]:before:-translate-y-1/2
+ }
+ .prose-22, .block-title .pross-22{
+  @apply [&_li]:before:top-15 [&_li]:before:left-12 [&_li]:before:-translate-x-1/2 [&_li]:before:-translate-y-1/2
+ }
+ .col-50{
+  @apply w-full lg:w-1/2
+ }
+ .vflex{
+  @apply flex flex-col 
+ }
+ .v-blockcard{
+  @apply flex-col lg:flex-row
+ }
+ .v-blockcard-reverse{
+ @apply flex-col lg:flex-row-reverse
+ }
+ /* text module css */
+.block-title{
+  @apply flex gap-24 xl:gap-32 [&_li]:font-light [&_li]:text-22 flex-col lg:flex-row 
+}
+.block-title.bg-color{
+  @apply p-16 sm:p-32 lg:p-48 rounded-xl bg-blue text-white 
+}
+.block-title.bg-color {
+  @apply [&_li]:before:bg-white 
+}
+.block-title .col-50{
+  @apply w-full lg:w-1/2
+}
+.block-title.compact-2xl{
+  @apply lg:max-w-lg w-full lg:px-48 
+}
+.block-title h2{
+ @apply text-35
+}
+.block-title p{
+  @apply text-22 leading-normal font-light
+}
+.block-title img{
+  @apply rounded-3xl size-full object-cover
+}
+.block-title .col-66{
+  @apply w-full lg:w-1/2 xl:w-2/3
+}
+.block-title .col-33{
+  @apply w-full lg:w-1/2 xl:w-1/3
+}
+.block-title .btn-primary, .block-title .btn-secondary{
+  @apply mt-48
+}
+}
+
+
+
+/* Common css */
+
+/* Cards Swiper — peek carousel: slides that spill outside the
+   constrained container are "not visible" per Swiper's own
+   watchSlidesProgress math, even though overflow-visible renders
+   them. That distinction (.swiper-slide-visible) is what drives the
+   white-card vs. tinted-peek look below. */
+.swiper-cards .swiper-slide {
+  height: auto !important;
+  flex-shrink: 0;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.swiper-card {
+  box-shadow: 0 24px 48px -24px rgba(23, 24, 53, .3);
+  transition: box-shadow .4s ease;
+}
+
+.swiper-card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--gradient);
+  opacity: 1;
+  transition: opacity .4s ease;
+}
+
+.swiper-card-body,
+.swiper-card-body h3,
+.swiper-card-body p,
+.swiper-card-body .btn-primary {
+  transition: background-color .4s ease, color .4s ease;
+}
+
+.swiper-card-body {
+  background: linear-gradient(160deg, var(--color-blue) 0%, var(--color-dark_blue) 100%);
+}
+
+.swiper-card-body h3 {
+  color: var(--color-white);
+}
+
+.swiper-card-body p {
+  color: rgb(255 255 255 / 78%);
+}
+
+.swiper-card-body .btn-primary {
+  background: rgb(255 255 255 / 16%);
+  color: var(--color-white);
+}
+
+.swiper-card-body .btn-primary:hover {
+  background: var(--color-white);
+  color: var(--color-blue);
+}
+
+/* Focused slides (fully within the constrained container) go clear */
+.swiper-slide-visible .swiper-card-media::after {
+  opacity: 0;
+}
+
+.swiper-slide-visible .swiper-card-body {
+  background: var(--color-white);
+}
+
+.swiper-slide-visible .swiper-card-body h3 {
+  color: var(--color-blue);
+}
+
+.swiper-slide-visible .swiper-card-body p {
+  color: var(--color-dark_blue);
+}
+
+.swiper-slide-visible .swiper-card-body .btn-primary {
+  background: var(--color-blue);
+  color: var(--color-white);
+}
+
+.swiper-slide-visible .swiper-card-body .btn-primary:hover {
+  background: var(--color-red);
+}
+
+.icon-md-4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+}
+/* --- Dropdown Outer Container Card --- */
+.nav-dropdown-list {
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.15), 
+              0 8px 16px -8px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  min-width: 380px;
+}
+
+.nav-dropdown-list-inner {
+  display: flex;
+  gap: 16px;
+}
+
+/* --- Main Menu Vertical Stack --- */
+.nav-dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+/* --- Individual Menu Item Row --- */
+.nav-dropdown-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  padding: 6px 8px;
+  border-radius: 16px;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.nav-dropdown-link:hover {
+  background-color: #f8fafc;
+}
+
+/* --- Left Icon + Label Group --- */
+.nav-dropdown-link-label {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* --- Icon Square Badge Wrapper --- */
+.nav-dropdown-link-icon-wrapper {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-dropdown-link-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* --- Label Typography --- */
+.nav-dropdown-link .text-navigation {
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+/* --- Right Chevron Arrow --- */
+.dropdown-icon.secondary {
+  width: 18px;
+  height: 18px;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
+}
+
+.dropdown-icon.secondary svg {
+  width: 18px;
+  height: 18px;
+  /* Orient Chevron to point Right */
+  transform: rotate(-90deg); 
+}
+
+/* --- Submenu Side Panel (if open) --- */
+.nav-submenu-wrapper {
+  border-left: 1px solid #f1f5f9;
+  padding-left: 16px;
+}
+
+.nav-submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-submenu .nav-dropdown-link {
+  padding: 8px 12px;
+}
+
+.nav-submenu .text-navigation {
+  font-weight: 500;
+  font-size: 14px;
+  color: #334155;
+}
+
+
