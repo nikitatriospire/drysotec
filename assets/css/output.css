@@ -646,13 +646,6 @@
   .gap-sm {
     gap: var(--spacing-sm);
   }
-  .space-y-1 {
-    :where(& > :not(:last-child)) {
-      --tw-space-y-reverse: 0;
-      margin-block-start: calc(calc(var(--spacing) * 1) * var(--tw-space-y-reverse));
-      margin-block-end: calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-y-reverse)));
-    }
-  }
   .space-y-2 {
     :where(& > :not(:last-child)) {
       --tw-space-y-reverse: 0;
@@ -1187,18 +1180,6 @@
   }
   .backface-hidden {
     backface-visibility: hidden;
-  }
-  .\*\:font-light {
-    :is(& > *) {
-      --tw-font-weight: var(--font-weight-light);
-      font-weight: var(--font-weight-light);
-    }
-  }
-  .\*\:font-normal {
-    :is(& > *) {
-      --tw-font-weight: var(--font-weight-normal);
-      font-weight: var(--font-weight-normal);
-    }
   }
   .group-hover\:translate-x-1 {
     &:is(:where(.group):hover *) {
