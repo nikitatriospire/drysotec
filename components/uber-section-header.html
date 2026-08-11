@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <!-- Meta data -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="M&S Umwelttechnik ist Ihr Technologiedienstleister im Bereich der Rauchgasentstickung und der selektiven nicht-katalytischen Reduktion (SNCR).">
+
+    <!-- Theme meta -->
+    <meta name="theme-color" content="#0066b2">
+    <meta name="theme-color" content="#0066b2" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0066b2" media="(prefers-color-scheme: dark)">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- title -->
+    <title>Mehldau & Steinfath Umwelttechnik</title>
+
+    <!-- Alpine.js -->
+     <script src="/assets/js/alpine.js" defer></script>
+
+    <!-- css -->
+     <link rel="stylesheet" href="/assets/css/swiper.css" />
+    <link rel="stylesheet" href="/assets/css/output.css" />
+
+
+  </head>
+  <body>
+        <a class="skip_link" href="#content">Skip to content</a>
+        <!-- header new -->
+  <!-- Header -->
+  <header class="sticky top-0 z-50"
+    x-data="{ mobileMenuOpen: false, megaMenuOpen: false,
+      activeTab: null,
+      mobileSubmenuOpen: false,
+      scrolled: false
+    }"
+    @scroll.window="scrolled = window.scrollY > 80"
+  >
+
+  <!-- =========================================================
+        TOP HEADER
+  ========================================================== -->
+  <div
+    class="overflow-hidden bg-blue text-white px-40 xl:px-64 text-sm xl:text-16 transition-(--transition)"
+    :class="scrolled ? 'max-h-0 py-0 opacity-0 pointer-events-none' : 'max-h-100 py-10 opacity-100'"
+  >
+    <div class="flex min-h-10 items-center justify-center md:justify-between font-medium">
+
+      <!-- Left -->
+      <div class="flex items-center gap-4">
+        <span>Ein Unternehmen der</span>
+        <a href="#" aria-label="VDH Group" class="ml-1 inline-flex items-center">
+          <img src="./assets/images/VH_menu-logo.svg" alt="VDH Group" class="w-88">
+        </a>
+      </div>
+
+      <!-- Center -->
+      <div class="items-center hidden md:flex">
+        <span>Haben Sie Fragen? Rufen Sie uns gerne an:</span>
+        <a href="tel:+492014378373" class="ml-1">
+          + 49 201 43783 73
+        </a>
+      </div>
+
+      <!-- Right -->
+      <div class="hidden lg:flex items-center gap-4">
+        <span>Besuchen Sie uns:</span>
+          <div class="flex gap-8 items-center">
+              <a
+              href="#"
+              aria-label="LinkedIn"
+              class="inline-flex size-16 items-center justify-center rounded-sm text-[#0872B9] shrink-0"
+            >
+              <img src="./assets/images/linkedin-icon-white.svg" alt="linkedin icon" class="size-16">
+            </a>
+          </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================
+        MAIN HEADER / NAVIGATION
+  ========================================================== -->
+  <div class="relative z-40 mt-40">
+    <div class="container">
+      <div class="flex items-center justify-between rounded-2xl bg-white py-26 px-40 shadow-inner">
+
+        <!-- LOGO -->
+        <div class="nav-left">
+          <a href="/" class="shrink-0" aria-label="DrySoTec">
+            <img
+              src="./assets/images/dry-logo-blue.svg"
+              alt="DrySoTec Rauchgasreinigung"
+              class="h-auto w-104"
+            >
+          </a>
+        </div>
+       <!-- DESKTOP NAVIGATION -->
+          <nav aria-label="Main Navigation" class="hidden xl:block">
+            <ul role="list" class="nav-list flex list-none m-0 p-0 gap-16 2xl:gap-20">
+
+              <!-- Über uns -->
+              <li class="nav-list-item">
+                <a href="#" class="nav-link w-inline-block px-4 py-2 block text-gray-800 hover:text-blue">
+                  <div class="text-navigation">Über uns</div>
+                </a>
+              </li>
+
+              <!-- Liefer- und Leistungsspektrum Dropdown -->
+              <li 
+                class="nav-list-item relative"
+                x-data="navDropdown({ delay: 300 })"
+                @mouseenter="handleMouseEnter()"
+                @mouseleave="handleMouseLeave()"
+                @keydown.escape.stop="closeDropdown()"
+              >
+                <div class="nav-dropdown w-dropdown">
+                  <div 
+                    class="nav-dropdown-toggle w-dropdown-toggle flex items-center gap-1 px-4 py-2 cursor-pointer hover:text-blue" :class="{ 'text-blue':   isOpen }"
+                    id="w-dropdown-toggle-0" 
+                    aria-controls="w-dropdown-list-0" 
+                    aria-haspopup="menu" 
+                    :aria-expanded="isOpen" 
+                    role="button" 
+                    tabindex="0"
+                    @click="toggleDropdown()"
+                    @keydown.enter.prevent="toggleDropdown()"
+                    @keydown.space.prevent="toggleDropdown()"
+                  >
+                    <div class="text-navigation">Liefer- und Leistungsspektrum</div>
+                    <div class="dropdown-icon w-embed transition-(--transition) " :class="{ 'text-blue': isOpen }">
+                      <i data-lucide="chevron-down" class="size-18"></i>
+                    </div>
+                    <a href="#" aria-hidden="true" tabindex="-1" class="link-absolute w-inline-block w--current absolute inset-0 z-10" @click.stop></a>
+                  </div>
+                        <ul
+                          x-show="isOpen"
+                          data-submenu-scope="" 
+                          class="nav-dropdown-list w-dropdown-list absolute left-0 top-full bg-white shadow-xl rounded-xl z-20 min-w-500" :class="{ 'mt-45': isOpen }"
+                          id="w-dropdown-list-0" 
+                          aria-labelledby="w-dropdown-toggle-0"
+                          x-cloak
+                        >
+                          <li class="nav-dropdown-list-inner flex">
+                            <div class="nav-dropdown-menu flex flex-col py-24 px-16" style="border-top-right-radius: 20px; border-bottom-right-radius: 20px;">
+                              <a
+                                href="#"
+                                class="group nav-dropdown-link w-inline-block flex items-center justify-between p-3 rounded-lg transition-(--transition) hover:bg-body-bg hover:scale-[0.95] gap-16"
+                                :class="{ 'bg-body-bg font-semibold': activeSubmenu === 'submenu-1' }"
+                                @mouseenter="activeSubmenu = 'submenu-1'"
+                                @focus="activeSubmenu = 'submenu-1'"
+                                tabindex="0"
+                              >
+                                <div class="nav-dropdown-link-label flex items-center gap-3">
+                                  <div class="nav-dropdown-link-icon-wrapper w-6 h-6 shrink-0">
+                                    <img loading="lazy" src="https://cdn.prod.website-files.com/6889ebbd537da13f793c0269/6889ebbd537da13f793c0413_Verfahrens-%20und%20Anlagentechnik.svg" alt="" class="nav-dropdown-link-icon w-full h-full">
+                                  </div>
+                                  <div class="text-navigation transition-(--transition) duration-200 group-hover:text-blue" :class="{ 'text-blue': activeSubmenu === 'submenu-1' }">SNCR (DeNOx)</div>
+                                </div>
+                                <div class="dropdown-icon secondary w-embed transition-(--transition) duration-200 group-hover:text-blue">
+                                  <i data-lucide="chevron-down" class="size-18"></i>
+                                </div>
+                              </a>
+
+                              <!-- Mobile SNCR & Temperaturmessungen -->
+                              <a
+                                href="#"
+                                class="group nav-dropdown-link w-inline-block flex items-center justify-between p-3 rounded-lg transition-(--transition) hover:bg-body-bg hover:scale-[0.95] gap-16"
+                                :class="{ 'bg-body-bg font-semibold': activeSubmenu === 'submenu-2' }"
+                                @mouseenter="activeSubmenu = 'submenu-2'"
+                                @focus="activeSubmenu = 'submenu-2'"
+                                tabindex="0"
+                              >
+                                <div class="nav-dropdown-link-label flex items-center gap-3">
+                                  <div class="nav-dropdown-link-icon-wrapper w-6 h-6 shrink-0">
+                                    <img loading="lazy" src="https://cdn.prod.website-files.com/6889ebbd537da13f793c0269/6889ebbd537da13f793c040f_Mess-%2C%20Steuer-%20und%20Regeltechnik.svg" alt="" class="nav-dropdown-link-icon w-full h-full">
+                                  </div>
+                                  <div class="text-navigation transition-(--transition) duration-200 group-hover:text-blue" :class="{ 'text-blue': activeSubmenu === 'submenu-2' }">Mobile SNCR Temperaturmessungen</div>
+                                </div>
+                                <div class="dropdown-icon secondary w-embed transition-(--transition) duration-200 group-hover:text-blue">
+                                  <i data-lucide="chevron-down" class="size-18"></i>
+                                </div>
+                              </a>
+
+                              <!-- Tanklager -->
+                              <a
+                                href="#"
+                                class="group nav-dropdown-link w-inline-block flex items-center justify-between p-3 rounded-lg transition hover:bg-body-bg hover:scale-[0.95] gap-16"
+                                :class="{ 'bg-body-bg font-semibold': activeSubmenu === 'submenu-3' }"
+                                @mouseenter="activeSubmenu = 'submenu-3'"
+                                @focus="activeSubmenu = 'submenu-3'"
+                                tabindex="0"
+                              >
+                                <div class="nav-dropdown-link-label flex items-center gap-3">
+                                  <div class="nav-dropdown-link-icon-wrapper w-6 h-6 shrink-0">
+                                    <img loading="lazy" src="https://cdn.prod.website-files.com/6889ebbd537da13f793c0269/6889ebbd537da13f793c0412_Qualifizierter%20Rohrleitungsbau.svg" alt="" class="nav-dropdown-link-icon w-full h-full">
+                                  </div>
+                                  <div class="text-navigation transition-(--transition) duration-200 group-hover:text-blue" :class="{ 'text-blue': activeSubmenu === 'submenu-3' }">Tanklager</div>
+                                </div>
+                                <div class="dropdown-icon secondary w-embed transition-(--transition) duration-200 group-hover:text-blue">
+                                  <i data-lucide="chevron-down" class="size-18"></i>
+                                  </svg>
+                                </div>
+                              </a>
+
+                              <!-- Reduktionsmittel (No Submenu) -->
+                              <a
+                                href="#"
+                                class="group nav-dropdown-link w-inline-block flex items-center justify-between p-3 rounded-lg transition hover:bg-body-bg hover:scale-[0.95] gap-16"
+                                @mouseenter="activeSubmenu = null"
+                                @focus="activeSubmenu = null"
+                                tabindex="0"
+                              >
+                                <div class="nav-dropdown-link-label flex items-center gap-3">
+                                  <div class="nav-dropdown-link-icon-wrapper w-6 h-6 shrink-0">
+                                    <img loading="lazy" src="https://cdn.prod.website-files.com/6889ebbd537da13f793c0269/6889ebbd537da13f793c0411_Das%20SNCR-Verfahren.svg" alt="" class="nav-dropdown-link-icon w-full h-full">
+                                  </div>
+                                  <div class="text-navigation transition-colors duration-200 group-hover:text-blue">Reduktionsmittel</div>
+                                </div>
+                              </a>
+
+                              <!-- Service & Instandhaltung (No Submenu) -->
+                              <a
+                                href="#"
+                                class="group nav-dropdown-link w-inline-block flex items-center justify-between p-3 rounded-lg transition hover:bg-body-bg hover:scale-[0.95] gap-16"
+                                @mouseenter="activeSubmenu = null"
+                                @focus="activeSubmenu = null"
+                                tabindex="0"
+                              >
+                                <div class="nav-dropdown-link-label flex items-center gap-3">
+                                  <div class="nav-dropdown-link-icon-wrapper w-6 h-6 shrink-0">
+                                    <img loading="lazy" src="https://cdn.prod.website-files.com/6889ebbd537da13f793c0269/688afdcdd090d33d6f84d076_wheel-check-icon.svg" alt="" class="nav-dropdown-link-icon w-full h-full">
+                                  </div>
+                                  <div class="text-navigation transition-colors duration-200 group-hover:text-blue">Service Instandhaltung</div>
+                                </div>
+                              </a>
+
+                            </div>
+
+                            <!-- Submenu Dynamic Side Panels -->
+                            <div class="nav-submenu-wrapper px-16 py-24 bg-body-bg!" x-show="activeSubmenu !== null">
+
+                              <!-- Submenu 1: SNCR (DeNOx) -->
+                              <div class="nav-submenu first flex flex-col gap-1" x-show="activeSubmenu === 'submenu-1'">
+                                <a href="#" class="group nav-dropdown-link w-inline-block p-2 rounded transition hover:scale-[0.95]" tabindex="0">
+                                  <div class="text-navigation text-sm transition-colors duration-200 group-hover:text-blue">Das SNCR-Verfahren</div>
+                                </a>
+                                <a href="#" class="group nav-dropdown-link w-inline-block p-2 rounded transition hover:scale-[0.95]" tabindex="0">
+                                  <div class="text-navigation text-sm transition-colors duration-200 group-hover:text-blue">SNCR-Anlagen</div>
+                                </a>
+                                <a href="#" class="group nav-dropdown-link w-inline-block p-2 rounded transition hover:scale-[0.95]" tabindex="0">
+                                  <div class="text-navigation text-sm transition-colors duration-200 group-hover:text-blue">Einzellanzenumschaltung</div>
+                                </a>
+                                <a href="#" class="group nav-dropdown-link w-inline-block p-2 rounded transition hover:scale-[0.95]" tabindex="0">
+                                  <div class="text-navigation text-sm transition-colors duration-200 group-hover:text-blue">TWIN-NOx</div>
+                                </a>
+                                <a href="#" class="group nav-dropdown-link w-inline-block p-2 rounded transition hover:scale-[0.95]" tabindex="0">
+                                  <div class="text-navigation text-sm transition-colors duration-200 group-hover:text-blue">Selective Cooling</div>
+                                </a>
+                              </div>
+
+                              <!-- Submenu 2: Mobile SNCR & Temperaturmessungen -->
+                              <div class="nav-submenu second flex flex-col gap-1" x-show="activeSubmenu === 'submenu-2'">
+                                <a href="#" class="group nav-dropdown-link w-inline-block p-2 rounded transition hover:scale-[0.95]" tabindex="0">
+                                  <div class="text-navigation text-sm transition-colors duration-200 group-hover:text-blue">Warum eine mobile SNCR?</div>
+                                </a>
+                                <a href="#" class="group nav-dropdown-link w-inline-block p-2 rounded transition hover:scale-[0.95]" tabindex="0">
+                                  <div class="text-navigation text-sm transition-colors duration-200 group-hover:text-blue">Versuchsaufbau -durchführung</div>
+                                </a>
+                                <a href="#" class="group nav-dropdown-link w-inline-block p-2 rounded transition hover:scale-[0.95]" tabindex="0">
+                                  <div class="text-navigation text-sm transition-colors duration-200 group-hover:text-blue">Temperaturmessungen</div>
+                                </a>
+                              </div>
+
+                              <!-- Submenu 3: Tanklager -->
+                              <div class="nav-submenu third flex flex-col gap-1" x-show="activeSubmenu === 'submenu-3'">
+                                <a href="#" class="group nav-dropdown-link w-inline-block p-2 rounded transition hover:scale-[0.95]" tabindex="0">
+                                  <div class="text-navigation text-sm transition-colors duration-200 group-hover:text-blue">Reduktionsmittellager für Harnstofflösung</div>
+                                </a>
+                                <a href="#" class="group nav-dropdown-link w-inline-block p-2 rounded transition hover:scale-[0.95]" tabindex="0">
+                                  <div class="text-navigation text-sm transition-colors duration-200 group-hover:text-blue">Das passende Tanklager für Ihr Reduktionsmittel</div>
+                                </a>
+                                <a href="#" class="group nav-dropdown-link w-inline-block p-2 rounded transition hover:scale-[0.95]" tabindex="0">
+                                  <div class="text-navigation text-sm transition-colors duration-200 group-hover:text-blue">Harnstofflösung und / oder Ammoniakwasser</div>
+                                </a>
+                                <a href="#" class="group nav-dropdown-link w-inline-block p-2 rounded transition hover:scale-[0.95]" tabindex="0">
+                                  <div class="text-navigation text-sm transition-colors duration-200 group-hover:text-blue">Harnstoff-Anmischstation</div>
+                                </a>
+                              </div>
+
+                            </div>
+                          </li>
+                        </ul>
+                </div>
+              </li>
+
+              <!-- Referenzen -->
+              <li class="nav-list-item">
+                <a href="#" class="nav-link w-inline-block px-4 py-2 block text-gray-800 hover:text-blue">
+                  <div class="text-navigation">Referenzen</div>
+                </a>
+              </li>
+
+              <!-- Downloads -->
+              <li class="nav-list-item">
+                <a href="#" class="nav-link w-inline-block px-4 py-2 block text-gray-800 hover:text-blue">
+                  <div class="text-navigation">Downloads</div>
+                </a>
+              </li>
+
+              <!-- Karriere -->
+              <li class="nav-list-item">
+                <a href="#" class="nav-link w-inline-block px-4 py-2 block text-gray-800 hover:text-blue">
+                  <div class="text-navigation">Karriere</div>
+                </a>
+              </li>
+
+            </ul>
+          </nav>
+
+        
+       
+        <!-- HEADER ACTIONS -->
+        <div class="nav-right items-center flex gap-24">
+          <a href="#" class="btn-secondary hidden lg:flex">KONTAKT</a>
+
+          <button
+            type="button"
+            class="hidden md:inline-flex h-47 items-center justify-centercursor-pointer"
+            aria-label="Sprache auswählen"
+          >
+            DE/
+          </button>
+           <!-- MOBILE MENU BUTTON -->
+        <button
+          type="button"
+          @click="mobileMenuOpen = !mobileMenuOpen"
+          class="inline-flex size-42 items-center justify-center  xl:hidden cursor-pointer"
+          aria-label="Menü öffnen"
+          :aria-expanded="mobileMenuOpen"
+        >
+          <span class="flex w-32 flex-col gap-7">
+            <span class="h-3 w-full bg-[#17172D]"></span>
+
+            <span class="h-3 w-full bg-[#17172D]"></span>
+          </span>
+        </button>
+
+          <button
+            type="button"
+            class="hidden md:inline-flex  items-center justify-center text-[#17172D] cursor-pointer"
+            aria-label="Suche öffnen"
+          >
+            <svg class="size-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5"/>
+              <path d="m16 16 5 5"/>
+            </svg>
+          </button>
+        </div>
+
+       
+
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+        RESPONSIVE MOBILE VIEW DRAWER
+  ========================================================== -->
+  <div
+    x-show="mobileMenuOpen"
+    class="fixed inset-0 z-50 bg-blue text-white overflow-y-auto xl:hidden flex flex-col justify-between px-40 pb-24"
+    x-cloak
+    x-data="{ 
+      lieferMenuOpen: false, 
+      mobileActiveTab: null 
+    }"
+  >
+    <div>
+      <!-- Header: Logo, Contact Pill & Close Icon -->
+      <div class="flex items-center justify-between py-24 md:py-auto md:p-sec-lg">
+        <a href="/" class="shrink-0">
+          <img src="./assets/images/dry-white-logo.svg" alt="DrySoTec" class="h-47 w-104">
+        </a>
+
+        <div class="flex items-center gap-4">
+          <div>
+              <button
+            type="button"
+            class="md:hidden inline-flex items-center text-white justify-center rounded-head  cursor-pointer text-sm"
+            aria-label="Sprache auswählen"
+          >
+            DE/
+          </button>
+          </div>
+          <a 
+            href="#" 
+            class="hidden md:block rounded-full border border-white px-24 py-12 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-white hover:text-blue"
+          >
+            KONTAKT
+          </a>
+            <button
+            type="button"
+            class="md:hidden inline-flex  items-center justify-center text-white cursor-pointer"
+            aria-label="Suche öffnen"
+          >
+            <svg class="size-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5"/>
+              <path d="m16 16 5 5"/>
+            </svg>
+          </button>
+          <button 
+            @click="mobileMenuOpen = false" 
+            aria-label="Menü schließen"
+            class="text-white hover:opacity-80 cursor-pointer"
+          >
+            <i data-lucide="x" class="size-24 md:size-40"></i> 
+          </button>
+        </div>
+      </div>
+
+    
+      <!-- Navigation List -->
+<nav class="in-menu md:p-sec-lg">
+  <ul class="">
+    
+    <!-- 1. Link: Über uns -->
+    <li class="menu-block flex items-center justify-between">
+      <a href="#" class="hover:underline font-semibold">Über uns</a>
+      <a href="#" aria-label="Über uns Details" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm ">
+        &gt;
+      </a>
+    </li>
+
+    <!-- 2. Link: Liefer- und Leistungsspektrum -->
+    <li class="menu-block flex items-center justify-between">
+      <a href="#" class="hover:underline font-semibold">Liefer- und Leistungsspektrum</a>
+      <a href="#" aria-label="Liefer- und Leistungsspektrum Details" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm">
+        &gt;
+      </a>
+    </li>
+
+    <!-- Submenu Container Parent Wrapper -->
+    <li class="w-full menu-block-has-child">
+      <ul class="submenu-container w-full">
+
+        <!-- 2.1 Trigger Item: SNCR (DeNOx) -->
+        <li class="pb-12 flex flex-col">
+          <button 
+            type="button" 
+            @click="mobileActiveTab = (mobileActiveTab === 'sncr' ? null : 'sncr')"
+            class="flex w-full items-center justify-between text-left group cursor-pointer"
+          >
+            <div class="inline-flex items-center gap-8 group-hover:underline text-sm font-semibold">
+              <span>SNCR (DeNOx)</span>
+                <i data-lucide="arrow-right" class="size-18"></i>  
+              </svg>
+            </div>
+            <span class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm">
+              &gt;
+            </span>
+          </button>
+        </li>
+
+        <!-- LEVEL 3: SNCR UL (!border-t-0 removes the divide border) -->
+        <li x-show="mobileActiveTab === 'sncr'" x-cloak class="w-full border-t-0! pb-4">
+          <ul class="nest-submenu *:pl-12 text-xs font-normal w-full">
+            <li class="flex items-center justify-between w-full pb-12">
+              <a href="#" class="hover:underline font-light">Das SNCR-Verfahren</a>
+              <a href="#" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm" aria-hidden="true" tabindex="-1">&gt;</a>
+            </li>
+            <li class="flex items-center justify-between w-full pb-12">
+              <a href="#" class="hover:underline">SNCR-Anlagen</a>
+              <a href="#" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm" aria-hidden="true" tabindex="-1">&gt;</a>
+            </li>
+            <li class="flex items-center justify-between w-full pb-12">
+              <a href="#" class="hover:underline">Einzellanzenumschaltung</a>
+              <a href="#" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm" aria-hidden="true" tabindex="-1">&gt;</a>
+            </li>
+            <li class="flex items-center justify-between w-full pb-12">
+              <a href="#" class="hover:underline">TWIN-NOx</a>
+              <a href="#" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm" aria-hidden="true" tabindex="-1">&gt;</a>
+            </li>
+            <li class="flex items-center justify-between w-full pb-12">
+              <a href="#" class="hover:underline">Selektive Rauchgaskühlung</a>
+              <a href="#" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm" aria-hidden="true" tabindex="-1">&gt;</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- 2.2 Trigger Item: Mobile SNCR & Temperaturmessungen -->
+        <li class="pb-12 flex flex-col">
+          <button 
+            type="button" 
+            @click="mobileActiveTab = (mobileActiveTab === 'mobile' ? null : 'mobile')"
+            class="flex w-full items-center justify-between text-left group cursor-pointer"
+          >
+            <div class="inline-flex items-center gap-8 group-hover:underline text-sm font-semibold">
+              <span>Mobile SNCR  Temperaturmessungen</span>
+              <i data-lucide="arrow-right" class="size-18"></i>  
+            </div>
+            <span class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm">
+              &gt;
+            </span>
+          </button>
+        </li>
+
+        <!-- LEVEL 3: Mobile SNCR UL -->
+        <li x-show="mobileActiveTab === 'mobile'" x-cloak class="w-full  pb-4">
+          <ul class="nest-submenu *:pl-12 text-xs font-normal w-full">
+            <li class="flex items-center justify-between pb-12">
+              <a href="#" class="hover:underline">Temperaturmessungen</a>
+              <a href="#" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm" aria-hidden="true" tabindex="-1">&gt;</a>
+            </li>
+            <li class="flex items-center justify-between pb-12">
+              <a href="#" class="hover:underline">Mobile SNCR Tests</a>
+              <a href="#" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm" aria-hidden="true" tabindex="-1">&gt;</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- 2.3 Trigger Item: Tanklager -->
+        <li class="pb-12 flex flex-col">
+          <button 
+            type="button" 
+            @click="mobileActiveTab = (mobileActiveTab === 'tanklager' ? null : 'tanklager')"
+            class="flex w-full items-center justify-between text-left group cursor-pointer"
+          >
+            <div class="inline-flex items-center gap-8 group-hover:underline text-sm font-semibold">
+              <span>Tanklager</span>
+              <i data-lucide="arrow-right" class="size-18"></i>  
+            </div>
+            <span class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm">
+              &gt;
+            </span>
+          </button>
+        </li>
+
+        <!-- LEVEL 3: Tanklager UL -->
+        <li x-show="mobileActiveTab === 'tanklager'" x-cloak class="w-full pb-4">
+          <ul class="nest-submenu w-full pl-12 text-xs font-normal">
+            <li class="flex items-center justify-between pb-12">
+              <a href="#" class="hover:underline">Tanklager Systeme</a>
+              <a href="#" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm" aria-hidden="true" tabindex="-1">&gt;</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- 2.4 Trigger Item: Reduktionsmittel -->
+        <li class="pb-12 flex flex-col">
+          <button 
+            type="button" 
+            @click="mobileActiveTab = (mobileActiveTab === 'reduktion' ? null : 'reduktion')"
+            class="flex w-full items-center justify-between text-left group cursor-pointer"
+          >
+            <div class="inline-flex items-center gap-2 group-hover:underline text-sm font-semibold">
+              <span>Reduktionsmittel</span>
+              <i data-lucide="arrow-right" class="size-18"></i>  
+            </div>
+            <span class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm">
+              &gt;
+            </span>
+          </button>
+        </li>
+
+        <!-- LEVEL 3: Reduktionsmittel UL -->
+        <li x-show="mobileActiveTab === 'reduktion'" x-cloak class="w-full  pb-4">
+          <ul class="nest-submenu w-full pl-12 text-xs font-normal">
+            <li class="flex items-center justify-between pb-12">
+              <a href="#" class="hover:underline">Harnstoff Ammoniak</a>
+              <a href="#" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm" aria-hidden="true" tabindex="-1">&gt;</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- 2.5 Trigger Item: Service & Instandhaltung -->
+        <li class="pb-12 flex flex-col">
+          <button 
+            type="button" 
+            @click="mobileActiveTab = (mobileActiveTab === 'service' ? null : 'service')"
+            class="flex w-full items-center justify-between text-left group cursor-pointer"
+          >
+            <div class="inline-flex items-center gap-2 group-hover:underline text-sm font-semibold">
+              <span>Service  Instandhaltung</span>
+              <i data-lucide="arrow-right" class="size-18"></i>  
+            </div>
+            <span class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm">
+              &gt;
+            </span>
+          </button>
+        </li>
+
+        <!-- LEVEL 3: Service UL -->
+        <li x-show="mobileActiveTab === 'service'" x-cloak class="w-full pb-4">
+          <ul class="nest-submenu w-full pl-12 text-xs font-normal">
+            <li class="flex items-center justify-between pb-12">
+              <a href="#" class="hover:underline">Wartung Support</a>
+              <a href="#" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm" aria-hidden="true" tabindex="-1">&gt;</a>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+    </li>
+
+    <!-- 3. Link: Referenzen -->
+    <li class="menu-block flex items-center justify-between">
+      <a href="#" class="hover:underline font-semibold">Referenzen</a>
+      <a href="#" aria-label="Referenzen Details" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm ">
+        &gt;
+      </a>
+    </li>
+
+    <!-- 4. Link: Downloads -->
+    <li class="menu-block flex items-center justify-between">
+      <a href="#" class="hover:underline font-semibold">Downloads</a>
+      <a href="#" aria-label="Downloads Details" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm ">
+        &gt;
+      </a>
+    </li>
+
+    <!-- 5. Link: Karriere -->
+    <li class="menu-block flex items-center justify-between">
+      <a href="#" class="hover:underline font-semibold">Karriere</a>
+      <a href="#" aria-label="Karriere Details" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm ">
+        &gt;
+      </a>
+    </li>
+
+    <!-- 6. Link: Kontakt -->
+    <li class="flex items-center justify-between py-4">
+      <a href="#" class="hover:underline font-semibold">Kontakt</a>
+      <a href="#" aria-label="Kontakt Details" class="rounded-2xl border-2 border-white px-24 py-1 font-semibold  w-108 h-30 hidden md:flex justify-center items-center text-sm ">
+        &gt;
+      </a>
+    </li>
+
+  </ul>
+</nav>
+    </div>
+
+    <!-- Mobile Footer Links -->
+    <div class="mt-10 flex items-center justify-center gap-24 text-sm font-semibold text-white">
+      <a href="#" class="hover:underline">Impressum</a>
+      <a href="#" class="hover:underline">Datenschutz</a>
+    </div>
+  </div>
+
+</header>
+<!-- Main -->
+    <main id="content">
+  
+     <!-- uber section-header -->
+     <section class="">
+            <div class="container">
+                    <div class="component">
+                        <div class="box-dark --withborder p-bottom gradient-dark w-full rounded-3xl mt-16 flex justify-center items-center border-l-20 border-l-red">
+                            <div class="compact-2xl">
+                                <h1 class="text-white text-35">Innovation durch Wissen und Erfahrung.</h1>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+     </section>
+
+</main>
+<!--  -->
+<script src="/assets/js/all.min.js"></script>
+    <script src="/assets/js/script.js"></script>
+     
+  </body>  
+</html>
