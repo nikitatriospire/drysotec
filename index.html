@@ -30,7 +30,8 @@
         <a class="skip_link" href="#content">Skip to content</a>
         <!-- header new -->
   <!-- Header -->
-  <header class="sticky top-0 z-50"
+<!-- Header -->
+  <header class="relative z-50"
     x-data="{ mobileMenuOpen: false, megaMenuOpen: false,
       activeTab: null,
       mobileSubmenuOpen: false,
@@ -43,8 +44,8 @@
         TOP HEADER
   ========================================================== -->
   <div
-    class="overflow-hidden bg-blue text-white px-40 xl:px-64 text-sm xl:text-16 transition-(--transition)"
-    :class="scrolled ? 'max-h-0 py-0 opacity-0 pointer-events-none' : 'max-h-100 py-10 opacity-100'"
+    class="fixed inset-x-0 top-0 z-50 bg-blue text-white py-10 px-40 xl:px-64 text-sm xl:text-16 transition-(--transition)"
+    :class="scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'"
   >
     <div class="flex min-h-10 items-center justify-center md:justify-between font-medium">
 
@@ -84,7 +85,10 @@
   <!-- =========================================================
         MAIN HEADER / NAVIGATION
   ========================================================== -->
-  <div class="relative z-40 mt-40">
+  <div
+    class="fixed inset-x-0 z-40 transition-[top] duration-500 ease-in-out"
+    :class="scrolled ? 'top-10' : 'top-100'"
+  >
     <div class="container">
       <div class="flex items-center justify-between rounded-2xl bg-white py-26 px-40 shadow-inner">
 
